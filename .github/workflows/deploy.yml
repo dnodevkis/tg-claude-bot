@@ -21,6 +21,11 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           cd /home/dekant/app/tg-claude-bot
+          # Создаем или обновляем файл .env с переменными окружения из GitHub Secrets
+          echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > .env
+          echo "CLAUDE_API_KEY=${{ secrets.CLAUDE_API_KEY }}" >> .env
+          echo "CLAUDE_MODEL=${{ secrets.CLAUDE_MODEL }}" >> .env
+          
           git pull origin main
           docker-compose down
           docker-compose build --no-cache 
