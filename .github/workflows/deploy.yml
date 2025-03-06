@@ -20,8 +20,8 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
-          cd /home/dekant/tg-olen
+          cd /home/dekant/app/tg-claude-bot
           git pull origin main
           docker-compose down
-          docker-compose build --no-cache  # Отключаем кэш
+          docker-compose build --no-cache 
           docker-compose up -d
